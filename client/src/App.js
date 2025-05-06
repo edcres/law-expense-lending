@@ -1,28 +1,45 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SalesforceData from './pages/SalesforceData';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import SalesforceData from './pages/SalesforceData';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <header>
-          <h1>My React App</h1>
-          {/* Add navigation if you want */}
-        </header>
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/salesforce" element={<SalesforceData />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/salesforce" element={<SalesforceData />} />
+    </Routes>
   );
 }
 
 export default App;
+
+
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import SalesforceData from './pages/SalesforceData';
+// import Home from './pages/Home';
+
+// function App() {
+//   return (
+//     <Router>
+//       <div>
+//         <header>
+//           <h1>My React App</h1>
+//           {/* Add navigation if you want */}
+//         </header>
+//         <main>
+//           <Routes>
+//             <Route path="/" element={<Home />} />
+//             <Route path="/salesforce" element={<SalesforceData />} />
+//           </Routes>
+//         </main>
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
 
 
 
