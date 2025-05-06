@@ -5,7 +5,6 @@ export async function getSalesforceData() {
       { id: 2, name: 'Another Lead', status: 'Closed' }
     ];
   }
-
 // Maybe replace with this (probably not bc we already have a way of doing the backend):
 // import axios from 'axios';
 // export async function getSalesforceData() {
