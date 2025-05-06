@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getSalesforceData } from '../api/salesforce';
+import { getSalesforceData } from './api/salesforce';
 
 export default function SalesforceData() {
   const [leads, setLeads] = useState([]);
