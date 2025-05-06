@@ -8,6 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/salesforce" element={<SalesforceData />} />
+      <Route path="*" element={<div>Page not found</div>} />
     </Routes>
   );
 }
