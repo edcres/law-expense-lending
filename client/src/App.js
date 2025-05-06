@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { getSalesforceData } from './api/salesforce';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SalesforceData from './pages/SalesforceData';
+import Home from './pages/Home';
 
-export default function SalesforceData() {
-  const [leads, setLeads] = useState([]);
-
-  useEffect(() => {
-    getSalesforceData().then(setLeads);
-  }, []);
-
+function App() {
   return (
-    <div>
-      <h2>Salesforce Leads</h2>
-      <ul>
-        {leads.map((lead) => (
-          <li key={lead.id}>
-            {lead.name} - {lead.status}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Router>
+      <div>
+        <header>
+          <h1>My React App</h1>
+          {/* Add navigation if you want */}
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/salesforce" element={<SalesforceData />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
+
+export default App;
+
 
 
 // import logo from './logo.svg';
