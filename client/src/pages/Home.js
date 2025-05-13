@@ -1,38 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import ExpenseCard from '../components/ExpenseCard';
-
-const statusOrder = [
-  "Pending",
-  "Marked for Request",
-  "Requested",
-  "Funded",
-  "Paid Off"
-];
+import { getExpenses, getStatusOrder } from '../api/salesforce';
 
 export default function Home() {
   const [expenses, setExpenses] = useState([]);
+  const [statusOrder, setStatusOrder] = useState([]);
 
   useEffect(() => {
-    setExpenses([
-      {
-        id: 1,
-        name: "E-043298",
-        amount: 500,
-        matter_display_name: "John vs Smith",
-        funded_by_loc: false,
-        created_at: "2024-12-01T12:00:00Z",
-        status: "Pending"
-      },
-      {
-        id: 2,
-        name: "E-043299",
-        amount: 1000,
-        matter_display_name: "Miller vs Co.",
-        funded_by_loc: true,
-        created_at: "2024-12-05T09:00:00Z",
-        status: "Requested"
-      }
-    ]);
+    getExpenses().then(setExpenses);
+    setStatusOrder(getStatusOrder());
   }, []);
 
   const moveToNextStatus = (id) => {
