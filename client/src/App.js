@@ -7,9 +7,9 @@ import Page3 from './pages/Page3';
 function App() {
   return (
     <div>
-      <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
-        <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-        <Link to="/page2" style={{ marginRight: '1rem' }}>Page 2</Link>
+      <nav style={{ padding: '1rem', backgroundColor: '#2A2A3C' }}>
+        <Link to="/">Home</Link>
+        <Link to="/page2">Page 2</Link>
         <Link to="/page3">Page 3</Link>
       </nav>
 
