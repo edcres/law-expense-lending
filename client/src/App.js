@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+import colors from './styles/theme';
 import Home from './pages/Home';
 import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
@@ -7,7 +8,7 @@ import Page3 from './pages/Page3';
 function App() {
   return (
     <div>
-      <nav style={{ padding: '1rem', backgroundColor: '#2A2A3C' }}>
+      <nav style={{ padding: '1rem', backgroundColor: colors.surface }}>
         <Link to="/">Home</Link>
         <Link to="/page2">Page 2</Link>
         <Link to="/page3">Page 3</Link>
