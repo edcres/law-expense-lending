@@ -1,28 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import colors from '../styles/theme';
+import { getExpenses } from '../api/salesforce';
 
-export default function Page2() {
+export default function ExpenseTable() {
   const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
-    setExpenses([
-      {
-        id: 1,
-        name: "E-043298",
-        client_name: "John Doe",
-        status: "Requested",
-        created_at: "2024-12-01T12:00:00Z",
-        interest_accrued: null
-      },
-      {
-        id: 2,
-        name: "E-043299",
-        client_name: "Susan Miller",
-        status: "Funded",
-        created_at: "2024-12-05T09:00:00Z",
-        interest_accrued: null
-      }
-    ]);
+    getExpenses().then(setExpenses);
   }, []);
 
   return (
@@ -45,10 +29,18 @@ export default function Page2() {
         <tbody>
           {expenses.map((expense) => (
             <tr key={expense.id}>
-              <td style={{ padding: '0.5rem', borderBottom: `1px solid ${colors.border}` }}>{expense.client_name}</td>
-              <td style={{ padding: '0.5rem', borderBottom: `1px solid ${colors.border}` }}>{expense.status}</td>
-              <td style={{ padding: '0.5rem', borderBottom: `1px solid ${colors.border}` }}>{expense.interest_accrued ?? '-'}</td>
-              <td style={{ padding: '0.5rem', borderBottom: `1px solid ${colors.border}` }}>{new Date(expense.created_at).toLocaleDateString()}</td>
+              <td style={{ padding: '0.5rem', borderBottom: `1px solid ${colors.border}` }}>
+                {expense.matter_display_name}
+              </td>
+              <td style={{ padding: '0.5rem', borderBottom: `1px solid ${colors.border}` }}>
+                {expense.status}
+              </td>
+              <td style={{ padding: '0.5rem', borderBottom: `1px solid ${colors.border}` }}>
+                -
+              </td>
+              <td style={{ padding: '0.5rem', borderBottom: `1px solid ${colors.border}` }}>
+                {new Date(expense.created_at).toLocaleDateString()}
+              </td>
             </tr>
           ))}
         </tbody>
