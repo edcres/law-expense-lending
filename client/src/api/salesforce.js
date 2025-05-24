@@ -31,6 +31,10 @@ export function getExpenses() {
   return Promise.resolve(mockExpenses);
 }
 
+export function getExpenseById(id) {
+  return Promise.resolve(mockExpenses.find(e => e.id === parseInt(id)));
+}
+
 export function getStatusOrder() {
   return statusOrder;
 }
