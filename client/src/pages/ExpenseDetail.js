@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import colors from '../styles/theme';
 
-export default function Page3() {
+export default function ExpenseDetail() {
   const { id } = useParams();
   const [expense, setExpense] = useState(null);
   const [history, setHistory] = useState([]);

@@ -3,7 +3,7 @@ import ExpenseCard from '../components/ExpenseCard';
 import { getExpenses, getStatusOrder } from '../api/salesforce';
 import colors from '../styles/theme';
 
-export default function Home() {
+export default function ExpenseTable() {
   const [expenses, setExpenses] = useState([]);
   const [statusOrder, setStatusOrder] = useState([]);
 
