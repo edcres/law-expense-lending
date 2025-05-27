@@ -13,24 +13,12 @@ export default function ExpenseDetail() {
     getExpenseById(id).then((data) => {
       if (data) {
         setExpense(data);
-
-        // Simulated status history based on dates
-        setStatusHistory([
-          { stage: "Pending", date: "2024-12-01" },
-          { stage: "Marked for Request", date: "2024-12-02" },
-          { stage: "Requested", date: "2024-12-04" },
-        ]);
-
-        // Simulated daily interest change
-        setInterestData([
-          { date: "2024-12-01", change: 0.00 },
-          { date: "2024-12-02", change: 1.25 },
-          { date: "2024-12-03", change: 2.18 },
-          { date: "2024-12-04", change: 3.42 }
-        ]);
+        setStatusHistory(data.status_history || []);
+        setInterestData(data.interest_accrued_by_day || []);
       }
     });
-  }, [id]);
+}, [id]);
+
 
   if (!expense) return <div style={{ color: colors.textPrimary }}>Loading...</div>;
 
