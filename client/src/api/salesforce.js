@@ -14,7 +14,17 @@ const mockExpenses = [
     matter_display_name: "John vs Smith",
     funded_by_loc: false,
     created_at: "2024-12-01T12:00:00Z",
-    status: "Pending"
+    status: "Pending",
+    status_history: [
+      { stage: "Pending", date: "2024-12-01" },
+      { stage: "Marked for Request", date: "2024-12-02" },
+      { stage: "Requested", date: "2024-12-03" }
+    ],
+    interest_accrued_by_day: [
+      { date: "2024-12-01", change: 0.00 },
+      { date: "2024-12-02", change: 1.25 },
+      { date: "2024-12-03", change: 2.18 }
+    ]
   },
   {
     id: 2,
@@ -23,7 +33,15 @@ const mockExpenses = [
     matter_display_name: "Miller vs Co.",
     funded_by_loc: true,
     created_at: "2024-12-05T09:00:00Z",
-    status: "Requested"
+    status: "Requested",
+    status_history: [
+      { stage: "Pending", date: "2024-12-04" },
+      { stage: "Requested", date: "2024-12-05" }
+    ],
+    interest_accrued_by_day: [
+      { date: "2024-12-04", change: 0.00 },
+      { date: "2024-12-05", change: 1.20 }
+    ]
   }
 ];
 
@@ -38,10 +56,3 @@ export function getExpenseById(id) {
 export function getStatusOrder() {
   return statusOrder;
 }
-
-// Maybe replace with this (probably not bc we already have a way of doing the backend):
-// import axios from 'axios';
-// export async function getSalesforceData() {
-//   const res = await axios.get('http://localhost:5000/salesforce/leads');
-//   return res.data;
-// }
