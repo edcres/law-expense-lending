@@ -1,29 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ExpenseCard from '../components/ExpenseCard';
-import { getExpenses, getStatusOrder } from '../api/salesforce';
+import { useExpenses, useExpenseDispatch } from '../context/ExpenseContext';
+import { getStatusOrder } from '../api/salesforce';
 import colors from '../styles/theme';
 
-export default function ExpenseTable() {
-  const [expenses, setExpenses] = useState([]);
-  const [statusOrder, setStatusOrder] = useState([]);
-
-  useEffect(() => {
-    getExpenses().then(setExpenses);
-    setStatusOrder(getStatusOrder());
-  }, []);
+export default function Home() {
+  const { expenses } = useExpenses();
+  const dispatch = useExpenseDispatch();
+  const statusOrder = getStatusOrder();
 
   const moveToNextStatus = (id) => {
-    setExpenses((prev) =>
-      prev.map((e) => {
-        if (e.id === id) {
-          const nextIndex = statusOrder.indexOf(e.status) + 1;
-          if (nextIndex < statusOrder.length) {
-            return { ...e, status: statusOrder[nextIndex] };
-          }
-        }
-        return e;
-      })
-    );
+    const expense = expenses.find(e => e.id === id);
+    if (!expense) return;
+
+    const nextIndex = statusOrder.indexOf(expense.status) + 1;
+    if (nextIndex < statusOrder.length) {
+      const updated = { ...expense, status: statusOrder[nextIndex] };
+      dispatch({ type: 'UPDATE_EXPENSE', payload: updated });
+    }
   };
 
   return (
@@ -33,42 +27,24 @@ export default function ExpenseTable() {
       minHeight: '100vh',
       padding: '1rem'
     }}>
-      <h2 style={{ marginBottom: '1rem' }}>Expense Dashboard</h2>
+      <h2>Expense Dashboard</h2>
 
-      <div style={{
-        display: 'flex',
-        gap: '1rem',
-        alignItems: 'flex-start',
-        overflowX: 'auto'
-      }}>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', overflowX: 'auto' }}>
         {statusOrder.map((status) => {
-          const filtered = expenses.filter((e) => e.status === status);
+          const filtered = expenses.filter(e => e.status === status);
           const totalAmount = filtered.reduce((sum, e) => sum + e.amount, 0);
 
           return (
-            <div
-              key={status}
-              style={{
-                flex: '1 1 0',
-                backgroundColor: colors.card,
-                border: `1px solid ${colors.border}`,
-                borderRadius: '8px',
-                padding: '1rem',
-                minWidth: '220px'
-              }}
-            >
-              <h4 style={{
-                textAlign: 'center',
-                color: colors.secondary,
-                marginBottom: '0.5rem'
-              }}>{status}</h4>
-
-              <p style={{
-                textAlign: 'center',
-                color: colors.textSecondary,
-                fontSize: '0.9rem',
-                marginBottom: '1rem'
-              }}>
+            <div key={status} style={{
+              flex: '1 1 0',
+              backgroundColor: colors.card,
+              border: `1px solid ${colors.border}`,
+              borderRadius: '8px',
+              padding: '1rem',
+              minWidth: '220px'
+            }}>
+              <h4 style={{ textAlign: 'center', color: colors.secondary }}>{status}</h4>
+              <p style={{ textAlign: 'center', color: colors.textSecondary }}>
                 {filtered.length} item{filtered.length !== 1 ? 's' : ''}<br />
                 ${totalAmount.toFixed(2)} total
               </p>
