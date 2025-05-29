@@ -1,14 +1,22 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import colors from '../styles/theme';
 
 export default function ExpenseCard({ expense, onAdvance }) {
+  const navigate = useNavigate();
+
   return (
-    <div style={{
-      backgroundColor: colors.surface,
-      border: `1px solid ${colors.border}`,
-      borderRadius: '6px',
-      margin: '0.5rem 0',
-      padding: '0.5rem'
-    }}>
+    <div
+      onClick={() => navigate(`/expense/${expense.id}`)}
+      style={{
+        backgroundColor: colors.surface,
+        border: `1px solid ${colors.border}`,
+        borderRadius: '6px',
+        margin: '0.5rem 0',
+        padding: '0.5rem',
+        cursor: 'pointer'
+      }}
+    >
       <strong style={{ color: colors.textPrimary }}>{expense.name}</strong>
       <div style={{ color: colors.textSecondary }}>
         ${expense.amount.toFixed(2)}<br />
@@ -17,7 +25,10 @@ export default function ExpenseCard({ expense, onAdvance }) {
         Funded by LOC: {expense.funded_by_loc ? "Yes" : "No"}
       </div>
       <button
-        onClick={() => onAdvance(expense.id)}
+        onClick={(e) => {
+          e.stopPropagation(); // prevent navigation
+          onAdvance(expense.id);
+        }}
         style={{
           marginTop: '0.5rem',
           backgroundColor: colors.primary,
