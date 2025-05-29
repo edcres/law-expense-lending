@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import colors from '../styles/theme';
-import { getExpenses } from '../api/salesforce';
+import { useExpenses } from '../context/ExpenseContext';
 
 export default function ExpenseTable() {
-  const [expenses, setExpenses] = useState([]);
-
-  useEffect(() => {
-    getExpenses().then(setExpenses);
-  }, []);
+  const { expenses } = useExpenses();
 
   return (
     <div style={{
