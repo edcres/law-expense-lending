@@ -19,7 +19,7 @@ export default function Layout() {
         borderBottom: `1px solid ${colors.border}`
       }}>
         <h1 style={{ margin: 0, fontSize: '1.5rem', color: colors.primary }}>
-          Expense Dashboard
+          Fund Stream
         </h1>
       </header>
 
