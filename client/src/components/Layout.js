@@ -37,7 +37,7 @@ export default function Layout() {
 
       {/* Main Content */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <main style={{ padding: '2rem', flex: 1 }}>
+        <main style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
           <Outlet />
         </main>
 
