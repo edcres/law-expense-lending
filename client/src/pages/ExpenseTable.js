@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import colors from '../styles/theme';
 import { useExpenses } from '../context/ExpenseContext';
+import '../index.css';
 
 export default function ExpenseTable() {
   const { expenses } = useExpenses();
@@ -68,22 +69,17 @@ export default function ExpenseTable() {
           {expenses.map((expense) => (
             <tr
               key={expense.id}
+              className="expense-row"
               onClick={() => navigate(`/expense/${expense.id}`)}
-              style={{
-                cursor: 'pointer',
-                borderBottom: `1px solid ${colors.border}`
-              }}
             >
-              <td style={{ padding: '0.5rem' }}>
-                {expense.matter_display_name}
-              </td>
+              <td style={{ padding: '0.5rem' }}>{expense.matter_display_name}</td>
               <td style={{ padding: '0.5rem' }}>{expense.status}</td>
               <td style={{ padding: '0.5rem' }}>-</td>
               <td style={{ padding: '0.5rem' }}>
                 {new Date(expense.created_at).toLocaleDateString()}
               </td>
             </tr>
-          ))}
+            ))}
         </tbody>
       </table>
     </div>
