@@ -20,3 +20,12 @@ nav {
   background-color: #2A2A3C; /* dark nav background */
   padding: 1rem;
 }
+
+.expense-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.expense-row:hover {
+  background-color: #2e2e42;
+}
