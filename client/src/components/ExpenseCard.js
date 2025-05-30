@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import colors from '../styles/theme';
+import '../index.css';
+
 
 export default function ExpenseCard({ expense, onAdvance }) {
   const navigate = useNavigate();
@@ -8,13 +10,13 @@ export default function ExpenseCard({ expense, onAdvance }) {
   return (
     <div
       onClick={() => navigate(`/expense/${expense.id}`)}
+      className="expense-card"
       style={{
         backgroundColor: colors.surface,
         border: `1px solid ${colors.border}`,
         borderRadius: '6px',
         margin: '0.5rem 0',
-        padding: '0.5rem',
-        cursor: 'pointer'
+        padding: '0.5rem'
       }}
     >
       <strong style={{ color: colors.textPrimary }}>{expense.name}</strong>

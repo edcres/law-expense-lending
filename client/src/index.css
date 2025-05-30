@@ -29,3 +29,13 @@ nav {
 .expense-row:hover {
   background-color: #2e2e42;
 }
+
+.expense-card {
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.expense-card:hover {
+  background-color: #2e2e42; /* darker shade for hover */
+  transform: translateY(-2px);
+}
