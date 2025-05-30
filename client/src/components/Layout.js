@@ -2,63 +2,55 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import colors from '../styles/theme';
 import config from '../config';
+import logo from '../assets/logo.png';
 
 export default function Layout() {
   return (
     <div style={{
-      backgroundColor: colors.background,
-      color: colors.textPrimary,
-      minHeight: '100vh',
       display: 'flex',
-      flexDirection: 'column',
-      fontFamily: "'Segoe UI', sans-serif"
+      minHeight: '100vh',
+      fontFamily: "'Segoe UI', sans-serif",
+      backgroundColor: colors.background,
+      color: colors.textPrimary
     }}>
-      {/* Header */}
-      <header style={{
-        padding: '1rem',
+      {/* Sidebar */}
+      <aside style={{
+        width: '220px',
         backgroundColor: colors.surface,
-        borderBottom: `1px solid ${colors.border}`
+        padding: '1.5rem 1rem',
+        borderRight: `1px solid ${colors.border}`,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem'
       }}>
-        <h1 style={{ margin: 0, fontSize: '1.5rem', color: colors.primary }}>
+        <img src={logo} alt="Logo" style={{ height: '40px' }} />
+        <h2 style={{ margin: 0, fontSize: '1.2rem', color: colors.primary }}>
           {config.appName}
-        </h1>
-      </header>
+        </h2>
 
-      {/* Navigation Bar */}
-      <nav style={{
-        padding: '0.5rem 1rem',
-        backgroundColor: colors.surface,
-        borderBottom: `1px solid ${colors.border}`
-      }}>
-        <Link to="/" style={{ marginRight: '1rem', color: colors.primary, textDecoration: 'none' }}>
-          Home
-        </Link>
-        <Link to="/expense-table" style={{ marginRight: '1rem', color: colors.primary, textDecoration: 'none' }}>
-          Expense Table
-        </Link>
-        <Link to="/expense/1" style={{ color: colors.primary, textDecoration: 'none' }}>
-          Expense Detail
-        </Link>
-      </nav>
+        <nav style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <Link to="/" style={{ color: colors.primary, textDecoration: 'none' }}>Home</Link>
+          <Link to="/expense-table" style={{ color: colors.primary, textDecoration: 'none' }}>Expense Table</Link>
+          <Link to="/expense/1" style={{ color: colors.primary, textDecoration: 'none' }}>Expense Detail</Link>
+        </nav>
+      </aside>
 
       {/* Main Content */}
-      <main style={{
-        padding: '2rem',
-        flex: 1
-      }}>
-        <Outlet />
-      </main>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <main style={{ padding: '2rem', flex: 1 }}>
+          <Outlet />
+        </main>
 
-      {/* Footer */}
-      <footer style={{
-        padding: '1rem',
-        textAlign: 'center',
-        backgroundColor: colors.surface,
-        borderTop: `1px solid ${colors.border}`,
-        color: colors.textSecondary
-      }}>
-        &copy; {new Date().getFullYear()} Expense App. All rights reserved.
-      </footer>
+        <footer style={{
+          padding: '1rem',
+          textAlign: 'center',
+          backgroundColor: colors.surface,
+          borderTop: `1px solid ${colors.border}`,
+          color: colors.textSecondary
+        }}>
+          &copy; {new Date().getFullYear()} {config.appName}. All rights reserved.
+        </footer>
+      </div>
     </div>
   );
 }
