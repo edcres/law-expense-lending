@@ -23,7 +23,16 @@ export default function Layout() {
         flexDirection: 'column',
         gap: '1rem'
       }}>
-        <img src={logo} alt="Logo" style={{ height: '40px' }} />
+        <img
+          src={logo}
+          alt="Logo"
+          style={{
+            height: '70px',
+            width: '70px',
+            objectFit: 'contain',
+            flexShrink: 0
+          }}
+        />
         <h2 style={{ margin: 0, fontSize: '1.2rem', color: colors.primary }}>
           {config.appName}
         </h2>
