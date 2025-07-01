@@ -10,6 +10,8 @@ const colors = {
   positive: '#5BD69F',
   warning: '#FFD166',
   info: '#4CC9F0',
+
+  appTitle: '#695294',       // App Name
 };
 
 export default colors;

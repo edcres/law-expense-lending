@@ -39,7 +39,6 @@ export default function Layout() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
-        gap: '1rem',
         boxSizing: 'border-box'
       }}>
         {/* Logo */}
@@ -59,8 +58,9 @@ export default function Layout() {
         <h2 style={{
           margin: 0,
           fontSize: '1.2rem',
-          color: colors.primary,
-          alignSelf: 'center'
+          color: colors.appTitle,
+          alignSelf: 'center',
+          fontFamily: 'Georgia, serif'
         }}>
           {config.appName}
         </h2>
