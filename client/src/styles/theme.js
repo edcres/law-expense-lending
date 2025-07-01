@@ -11,7 +11,7 @@ const colors = {
   warning: '#FFD166',
   info: '#4CC9F0',
 
-  appTitle: '#695294',       // App Name
+  appTitle: '#574a70',       // App Name
 };
 
 export default colors;
