@@ -36,9 +36,11 @@ export default function Layout() {
             height: '70px',
             width: '70px',
             objectFit: 'contain',
-            flexShrink: 0
+            flexShrink: 0,
+            alignSelf: 'center'  // ✅ Centers it inside the flex column
           }}
         />
+
         <h2 style={{ margin: 0, fontSize: '1.2rem', color: colors.primary }}>
           {config.appName}
         </h2>
