@@ -3,11 +3,20 @@ import { Outlet, Link } from 'react-router-dom';
 import colors from '../styles/theme';
 import config from '../config';
 import logo from '../assets/logo.png';
+import {
+  FiHome,
+  FiTable,
+  FiFileText,
+  FiLogOut
+} from 'react-icons/fi'; // Feather icons
 
 const linkStyle = {
   color: colors.primary,
   textDecoration: 'none',
-  fontSize: '1rem'
+  fontSize: '1rem',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem' // adds space between icon and text
 };
 
 export default function Layout() {
@@ -56,23 +65,34 @@ export default function Layout() {
           {config.appName}
         </h2>
 
-        {/* Navigation Links + Divider + Sign Out */}
+        {/* Navigation */}
         <nav style={{
           marginTop: '2rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.75rem',
+          gap: '0.75rem'
         }}>
-          <Link to="/" style={linkStyle}>Home</Link>
-          <Link to="/expense-table" style={linkStyle}>Expense Table</Link>
-          <Link to="/expense/1" style={linkStyle}>Expense Detail</Link>
+          <Link to="/" style={linkStyle}>
+            <FiHome />
+            Home
+          </Link>
+          <Link to="/expense-table" style={linkStyle}>
+            <FiTable />
+            Expense Table
+          </Link>
+          <Link to="/expense/1" style={linkStyle}>
+            <FiFileText />
+            Expense Detail
+          </Link>
 
+          {/* Divider */}
           <hr style={{
             margin: '1.5rem 0',
             width: '100%',
             borderColor: colors.border
           }} />
 
+          {/* Sign Out Button */}
           <button
             onClick={() => alert('Signing out...')}
             style={{
@@ -81,10 +101,10 @@ export default function Layout() {
               border: 'none',
               padding: 0,
               textAlign: 'left',
-              cursor: 'pointer',
-              width: '100%'
+              cursor: 'pointer'
             }}
           >
+            <FiLogOut />
             Sign Out
           </button>
         </nav>
