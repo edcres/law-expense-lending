@@ -41,9 +41,17 @@ export default function Layout() {
           }}
         />
 
-        <h2 style={{ margin: 0, fontSize: '1.2rem', color: colors.primary }}>
+        <h2
+          style={{
+            margin: 0,
+            fontSize: '1.2rem',
+            color: colors.primary,
+            alignSelf: 'center'  // ✅ Centers under the logo
+          }}
+        >
           {config.appName}
         </h2>
+
 
         <nav style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <Link to="/" style={{ color: colors.primary, textDecoration: 'none' }}>Home</Link>
