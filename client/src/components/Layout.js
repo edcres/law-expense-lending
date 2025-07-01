@@ -30,11 +30,10 @@ export default function Layout() {
     }}>
       {/* Sidebar */}
       <aside style={{
-        width: '240px',
-        minWidth: '240px',
-        maxWidth: '240px',
+        width: '180px',
+        minWidth: '180px',
+        maxWidth: '180px',
         backgroundColor: colors.surface,
-        padding: '1rem',
         borderRight: `1px solid ${colors.border}`,
         display: 'flex',
         flexDirection: 'column',
