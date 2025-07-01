@@ -3,6 +3,8 @@ import { Outlet, Link } from 'react-router-dom';
 import colors from '../styles/theme';
 import config from '../config';
 import logo from '../assets/logo.png';
+import { FiHome, FiTable, FiFileText, FiLogOut } from 'react-icons/fi';
+
 
 export default function Layout() {
   return (
