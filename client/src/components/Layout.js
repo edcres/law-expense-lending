@@ -3,8 +3,12 @@ import { Outlet, Link } from 'react-router-dom';
 import colors from '../styles/theme';
 import config from '../config';
 import logo from '../assets/logo.png';
-import { FiHome, FiTable, FiFileText, FiLogOut } from 'react-icons/fi';
 
+const linkStyle = {
+  color: colors.primary,
+  textDecoration: 'none',
+  fontSize: '1rem'
+};
 
 export default function Layout() {
   return (
@@ -17,9 +21,9 @@ export default function Layout() {
     }}>
       {/* Sidebar */}
       <aside style={{
-        width: '240px', // 🎯 FIXED width
-        minWidth: '240px', // prevents shrinking
-        maxWidth: '240px', // prevents stretching
+        width: '240px',
+        minWidth: '240px',
+        maxWidth: '240px',
         backgroundColor: colors.surface,
         padding: '1rem',
         borderRight: `1px solid ${colors.border}`,
@@ -29,6 +33,7 @@ export default function Layout() {
         gap: '1rem',
         boxSizing: 'border-box'
       }}>
+        {/* Logo */}
         <img
           src={logo}
           alt="Logo"
@@ -37,26 +42,51 @@ export default function Layout() {
             width: '70px',
             objectFit: 'contain',
             flexShrink: 0,
-            alignSelf: 'center'  // ✅ Centers it inside the flex column
+            alignSelf: 'center'
           }}
         />
 
-        <h2
-          style={{
-            margin: 0,
-            fontSize: '1.2rem',
-            color: colors.primary,
-            alignSelf: 'center'  // ✅ Centers under the logo
-          }}
-        >
+        {/* App Name */}
+        <h2 style={{
+          margin: 0,
+          fontSize: '1.2rem',
+          color: colors.primary,
+          alignSelf: 'center'
+        }}>
           {config.appName}
         </h2>
 
+        {/* Navigation Links + Divider + Sign Out */}
+        <nav style={{
+          marginTop: '2rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem',
+        }}>
+          <Link to="/" style={linkStyle}>Home</Link>
+          <Link to="/expense-table" style={linkStyle}>Expense Table</Link>
+          <Link to="/expense/1" style={linkStyle}>Expense Detail</Link>
 
-        <nav style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <Link to="/" style={{ color: colors.primary, textDecoration: 'none' }}>Home</Link>
-          <Link to="/expense-table" style={{ color: colors.primary, textDecoration: 'none' }}>Expense Table</Link>
-          <Link to="/expense/1" style={{ color: colors.primary, textDecoration: 'none' }}>Expense Detail</Link>
+          <hr style={{
+            margin: '1.5rem 0',
+            width: '100%',
+            borderColor: colors.border
+          }} />
+
+          <button
+            onClick={() => alert('Signing out...')}
+            style={{
+              ...linkStyle,
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              textAlign: 'left',
+              cursor: 'pointer',
+              width: '100%'
+            }}
+          >
+            Sign Out
+          </button>
         </nav>
       </aside>
 
