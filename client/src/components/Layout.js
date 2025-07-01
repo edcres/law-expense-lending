@@ -15,13 +15,17 @@ export default function Layout() {
     }}>
       {/* Sidebar */}
       <aside style={{
-        width: '220px',
+        width: '240px', // 🎯 FIXED width
+        minWidth: '240px', // prevents shrinking
+        maxWidth: '240px', // prevents stretching
         backgroundColor: colors.surface,
-        padding: '1.5rem 1rem',
+        padding: '1rem',
         borderRight: `1px solid ${colors.border}`,
         display: 'flex',
         flexDirection: 'column',
-        gap: '1rem'
+        alignItems: 'flex-start',
+        gap: '1rem',
+        boxSizing: 'border-box'
       }}>
         <img
           src={logo}
