@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import colors from '../styles/theme';
 import config from '../config';
@@ -16,10 +16,15 @@ const linkStyle = {
   fontSize: '1rem',
   display: 'flex',
   alignItems: 'center',
-  gap: '0.5rem' // adds space between icon and text
+  gap: '0.5rem',
+  whiteSpace: 'nowrap'
 };
 
 export default function Layout() {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const sidebarWidth = collapsed ? '70px' : '180px';
+
   return (
     <div style={{
       display: 'flex',
@@ -30,16 +35,33 @@ export default function Layout() {
     }}>
       {/* Sidebar */}
       <aside style={{
-        width: '180px',
-        minWidth: '180px',
-        maxWidth: '180px',
+        width: sidebarWidth,
+        minWidth: sidebarWidth,
+        maxWidth: sidebarWidth,
         backgroundColor: colors.surface,
         borderRight: `1px solid ${colors.border}`,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
-        boxSizing: 'border-box'
+        alignItems: collapsed ? 'center' : 'flex-start',
+        boxSizing: 'border-box',
+        transition: 'width 0.3s ease'
       }}>
+        {/* Toggle Button */}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: colors.primary,
+            fontSize: '1.5rem',
+            margin: '1rem',
+            cursor: 'pointer',
+            alignSelf: collapsed ? 'center' : 'flex-end'
+          }}
+        >
+          ☰
+        </button>
+
         {/* Logo */}
         <img
           src={logo}
@@ -54,34 +76,38 @@ export default function Layout() {
         />
 
         {/* App Name */}
-        <h2 style={{
-          margin: 0,
-          fontSize: '1.2rem',
-          color: colors.appTitle,
-          alignSelf: 'center',
-          fontFamily: 'Georgia, serif'
-        }}>
-          {config.appName}
-        </h2>
+        {!collapsed && (
+          <h2 style={{
+            margin: 0,
+            fontSize: '1.2rem',
+            color: colors.appTitle,
+            alignSelf: 'center',
+            fontFamily: 'Georgia, serif'
+          }}>
+            {config.appName}
+          </h2>
+        )}
 
         {/* Navigation */}
         <nav style={{
           marginTop: '2rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.75rem'
+          gap: '0.75rem',
+          alignItems: collapsed ? 'center' : 'flex-start',
+          paddingLeft: collapsed ? 0 : '1rem'
         }}>
           <Link to="/" style={linkStyle}>
             <FiHome />
-            Home
+            {!collapsed && 'Home'}
           </Link>
           <Link to="/expense-table" style={linkStyle}>
             <FiTable />
-            Expense Table
+            {!collapsed && 'Expense Table'}
           </Link>
           <Link to="/expense/1" style={linkStyle}>
             <FiFileText />
-            Expense Detail
+            {!collapsed && 'Expense Detail'}
           </Link>
 
           {/* Divider */}
@@ -104,7 +130,7 @@ export default function Layout() {
             }}
           >
             <FiLogOut />
-            Sign Out
+            {!collapsed && 'Sign Out'}
           </button>
         </nav>
       </aside>
