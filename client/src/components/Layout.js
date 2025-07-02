@@ -48,24 +48,24 @@ export default function Layout() {
       }}>
         {/* Toggle Button */}
         <div style={{
-  width: '100%',
-  display: 'flex',
-  justifyContent: collapsed ? 'center' : 'flex-start'
-}}>
-  <button
-    onClick={() => setCollapsed(!collapsed)}
-    style={{
-      background: 'none',
-      border: 'none',
-      color: colors.primary,
-      fontSize: '1.5rem',
-      margin: '1rem',
-      cursor: 'pointer'
-    }}
-  >
-    ☰
-  </button>
-</div>
+          width: '100%',
+          display: 'flex',
+          justifyContent: collapsed ? 'center' : 'flex-start'
+        }}>
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: colors.primary,
+              fontSize: '1.5rem',
+              margin: '1rem',
+              cursor: 'pointer'
+            }}
+          >
+            ☰
+          </button>
+        </div>
 
         {/* Logo */}
         <img
@@ -100,7 +100,6 @@ export default function Layout() {
           flexDirection: 'column',
           gap: '0.75rem',
           alignItems: collapsed ? 'center' : 'flex-start',
-          paddingLeft: collapsed ? 0 : '1rem'
         }}>
           <Link to="/" style={linkStyle}>
             <FiHome />
