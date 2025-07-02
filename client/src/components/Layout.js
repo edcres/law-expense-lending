@@ -47,20 +47,25 @@ export default function Layout() {
         transition: 'width 0.3s ease'
       }}>
         {/* Toggle Button */}
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: colors.primary,
-            fontSize: '1.5rem',
-            margin: '1rem',
-            cursor: 'pointer',
-            alignSelf: collapsed ? 'center' : 'flex-end'
-          }}
-        >
-          ☰
-        </button>
+        <div style={{
+  width: '100%',
+  display: 'flex',
+  justifyContent: collapsed ? 'center' : 'flex-start'
+}}>
+  <button
+    onClick={() => setCollapsed(!collapsed)}
+    style={{
+      background: 'none',
+      border: 'none',
+      color: colors.primary,
+      fontSize: '1.5rem',
+      margin: '1rem',
+      cursor: 'pointer'
+    }}
+  >
+    ☰
+  </button>
+</div>
 
         {/* Logo */}
         <img
