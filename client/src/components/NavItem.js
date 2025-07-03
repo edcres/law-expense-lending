@@ -9,7 +9,7 @@ export default function NavItem({ to, icon, label, collapsed }) {
   const isActive = location.pathname === to;
 
   const baseStyle = {
-    color: isActive ? colors.primary : colors.textPrimary,
+    color: colors.textPrimary,
     textDecoration: 'none',
     fontSize: '1rem',
     display: 'flex',
@@ -18,10 +18,10 @@ export default function NavItem({ to, icon, label, collapsed }) {
     padding: '0.5rem 1rem',
     width: '100%',
     borderRadius: '4px',
-    backgroundColor: hover
-      ? colors.hoverBackground || '#f0f0f0'
-      : isActive
-      ? colors.activeBackground || '#e0e0e0'
+    backgroundColor: isActive
+      ? colors.primary
+      : hover
+      ? '#3C3C52' // subtle hover shade within your dark palette
       : 'transparent',
     cursor: 'pointer',
     transition: 'background-color 0.2s ease'
