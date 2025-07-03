@@ -19,12 +19,13 @@ export default function NavItem({ to, icon, label, collapsed }) {
     width: '100%',
     borderRadius: '4px',
     backgroundColor: isActive
-      ? colors.primary
-      : hover
-      ? '#3C3C52' // subtle hover shade within your dark palette
-      : 'transparent',
+        ? colors.primary
+        : hover
+        ? '#3C3C52'
+        : 'transparent',
     cursor: 'pointer',
-    transition: 'background-color 0.2s ease'
+    transition: 'background-color 0.2s ease',
+    boxSizing: 'border-box' // ✅ This makes sure padding stays inside 100% width
   };
 
   return (
