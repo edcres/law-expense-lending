@@ -34,7 +34,7 @@ export default function Home() {
           gap: '1rem',
           alignItems: 'flex-start',
           overflowX: 'auto',
-          padding: '0rem 1rem 1rem 1rem',        // Optional space inside scroll area
+          padding: '0rem 1rem 2rem 1rem',        // Optional space inside scroll area
         }}>
 
         {statusOrder.map((status) => {
