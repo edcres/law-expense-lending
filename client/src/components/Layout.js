@@ -8,7 +8,7 @@ import {
   FiTable,
   FiFileText,
   FiLogOut
-} from 'react-icons/fi'; // Feather icons
+} from 'react-icons/fi';
 
 const linkStyle = {
   color: colors.primary,
@@ -23,8 +23,6 @@ const linkStyle = {
 export default function Layout() {
   const [collapsed, setCollapsed] = useState(false);
 
-  const sidebarWidth = collapsed ? '70px' : '180px';
-
   return (
     <div style={{
       display: 'flex',
@@ -33,114 +31,119 @@ export default function Layout() {
       backgroundColor: colors.background,
       color: colors.textPrimary
     }}>
-      {/* Sidebar */}
-      <aside style={{
-        width: sidebarWidth,
-        minWidth: sidebarWidth,
-        maxWidth: sidebarWidth,
+      
+      {/* Animated Sidebar Container */}
+      <div style={{
+        width: collapsed ? '70px' : '180px',
         backgroundColor: colors.surface,
         borderRight: `1px solid ${colors.border}`,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: collapsed ? 'center' : 'flex-start',
-        boxSizing: 'border-box',
+        overflow: 'hidden',
         transition: 'width 0.3s ease'
       }}>
-        {/* Toggle Button */}
-        <div style={{
+        
+        {/* Sidebar Content */}
+        <aside style={{
           width: '100%',
           display: 'flex',
-          justifyContent: collapsed ? 'center' : 'flex-start'
-        }}>
-          <button
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: colors.primary,
-              fontSize: '1.5rem',
-              margin: '1rem',
-              cursor: 'pointer'
-            }}
-          >
-            ☰
-          </button>
-        </div>
-
-        {/* Logo */}
-        <img
-          src={logo}
-          alt="Logo"
-          style={{
-            height: '70px',
-            width: '70px',
-            objectFit: 'contain',
-            flexShrink: 0,
-            alignSelf: 'center'
-          }}
-        />
-
-        {/* App Name */}
-        {!collapsed && (
-          <h2 style={{
-            margin: 0,
-            fontSize: '1.2rem',
-            color: colors.appTitle,
-            alignSelf: 'center',
-            fontFamily: 'Georgia, serif'
-          }}>
-            {config.appName}
-          </h2>
-        )}
-
-        {/* Navigation */}
-        <nav style={{
-          marginTop: '2rem',
-          display: 'flex',
           flexDirection: 'column',
-          gap: '0.75rem',
           alignItems: collapsed ? 'center' : 'flex-start',
+          boxSizing: 'border-box',
+          height: '100vh'
         }}>
-          <Link to="/" style={linkStyle}>
-            <FiHome />
-            {!collapsed && 'Home'}
-          </Link>
-          <Link to="/expense-table" style={linkStyle}>
-            <FiTable />
-            {!collapsed && 'Expense Table'}
-          </Link>
-          <Link to="/expense/1" style={linkStyle}>
-            <FiFileText />
-            {!collapsed && 'Expense Detail'}
-          </Link>
-
-          {/* Divider */}
-          <hr style={{
-            margin: '1.5rem 0',
+          {/* Toggle Button */}
+          <div style={{
             width: '100%',
-            borderColor: colors.border
-          }} />
+            display: 'flex',
+            justifyContent: collapsed ? 'center' : 'flex-start'
+          }}>
+            <button
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: colors.primary,
+                fontSize: '1.5rem',
+                margin: '1rem',
+                cursor: 'pointer'
+              }}
+            >
+              ☰
+            </button>
+          </div>
 
-          {/* Sign Out Button */}
-          <button
-            onClick={() => alert('Signing out...')}
+          {/* Logo */}
+          <img
+            src={logo}
+            alt="Logo"
             style={{
-              ...linkStyle,
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              textAlign: 'left',
-              cursor: 'pointer'
+              height: '70px',
+              width: '70px',
+              objectFit: 'contain',
+              flexShrink: 0,
+              alignSelf: 'center'
             }}
-          >
-            <FiLogOut />
-            {!collapsed && 'Sign Out'}
-          </button>
-        </nav>
-      </aside>
+          />
+
+          {/* App Name */}
+          {!collapsed && (
+            <h2 style={{
+              margin: 0,
+              fontSize: '1.2rem',
+              color: colors.appTitle,
+              alignSelf: 'center',
+              fontFamily: 'Georgia, serif'
+            }}>
+              {config.appName}
+            </h2>
+          )}
+
+          {/* Navigation */}
+          <nav style={{
+            marginTop: '2rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.75rem',
+            alignItems: collapsed ? 'center' : 'flex-start'
+          }}>
+            <Link to="/" style={linkStyle}>
+              <FiHome />
+              {!collapsed && 'Home'}
+            </Link>
+            <Link to="/expense-table" style={linkStyle}>
+              <FiTable />
+              {!collapsed && 'Expense Table'}
+            </Link>
+            <Link to="/expense/1" style={linkStyle}>
+              <FiFileText />
+              {!collapsed && 'Expense Detail'}
+            </Link>
+
+            <hr style={{
+              margin: '1.5rem 0',
+              width: '100%',
+              borderColor: colors.border
+            }} />
+
+            <button
+              onClick={() => alert('Signing out...')}
+              style={{
+                ...linkStyle,
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                textAlign: 'left',
+                cursor: 'pointer'
+              }}
+            >
+              <FiLogOut />
+              {!collapsed && 'Sign Out'}
+            </button>
+          </nav>
+        </aside>
+      </div>
 
       {/* Main Content */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' , minWidth: 0}}>
         <main style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
           <Outlet />
         </main>
