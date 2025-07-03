@@ -85,7 +85,9 @@ export default function Layout() {
           display: 'flex',
           flexDirection: 'column',
           gap: '0.75rem',
-          width: '100%' // ensures items stretch to fit
+          width: '100%',
+          boxSizing: 'border-box',
+          padding: collapsed ? '0' : '0 0.5rem'
         }}>
           <NavItem to="/" icon={<FiHome />} label="Home" collapsed={collapsed} />
           <NavItem to="/expense-table" icon={<FiTable />} label="Expense Table" collapsed={collapsed} />
