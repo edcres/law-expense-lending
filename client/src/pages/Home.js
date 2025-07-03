@@ -28,7 +28,15 @@ export default function Home() {
     }}>
       <h2 style={{ padding: '1rem 1rem 0 1rem' }}>Expense Dashboard</h2>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', overflowX: 'auto' }}>
+      <div
+        style={{
+          display: 'flex',
+          gap: '1rem',
+          alignItems: 'flex-start',
+          overflowX: 'auto',
+          padding: '0rem 1rem 1rem 1rem',        // Optional space inside scroll area
+        }}>
+
         {statusOrder.map((status) => {
           const filtered = expenses.filter(e => e.status === status);
           const totalAmount = filtered.reduce((sum, e) => sum + e.amount, 0);
