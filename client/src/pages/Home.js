@@ -24,10 +24,9 @@ export default function Home() {
     <div style={{
       backgroundColor: colors.background,
       color: colors.textPrimary,
-      minHeight: '100vh',
-      padding: '1rem'
+      minHeight: '100vh'
     }}>
-      <h2>Expense Dashboard</h2>
+      <h2 style={{ padding: '1rem 1rem 0 1rem' }}>Expense Dashboard</h2>
 
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', overflowX: 'auto' }}>
         {statusOrder.map((status) => {
