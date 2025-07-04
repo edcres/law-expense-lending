@@ -5,7 +5,7 @@ const colors = {
   border: '#44445A',
   primary: '#A06CFF',       // Accent Purple
   secondary: '#FF5F91',     // Pink/Red Accent
-  textPrimary: '#FFFFFF',
+  textPrimary: '#9d90b5',
   textSecondary: '#CCCCCC',
   positive: '#5BD69F',
   warning: '#FFD166',

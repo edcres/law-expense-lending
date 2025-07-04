@@ -18,6 +18,7 @@ export default function NavItem({ to, icon, label, collapsed }) {
     padding: '0.5rem 1rem',
     width: '100%',
     borderRadius: '4px',
+    color: isActive ? '#ffffff' : colors.textPrimary,
     backgroundColor: isActive
         ? colors.primary
         : hover
