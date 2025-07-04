@@ -30,7 +30,7 @@ export default function ExpenseDetail() {
       minHeight: '100vh',
       padding: '1rem'
     }}>
-      <h2>Expense Detail: {expense.name}</h2>
+      <h2>Expense: {expense.name}</h2>
       <h4>Client: {expense.matter_display_name}</h4>
       <h4>Status: {expense.status}</h4>
 

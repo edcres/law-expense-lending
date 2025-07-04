@@ -26,7 +26,6 @@ export default function Home() {
       color: colors.textPrimary,
       minHeight: '100vh'
     }}>
-      <h2 style={{ padding: '1rem 1rem 0 1rem' }}>Expense Dashboard</h2>
 
       <div
         style={{
@@ -34,7 +33,7 @@ export default function Home() {
           gap: '1rem',
           alignItems: 'flex-start',
           overflowX: 'auto',
-          padding: '0rem 1rem 2rem 1rem',        // Optional space inside scroll area
+          padding: '1rem 1rem 2rem 1rem',        // Optional space inside scroll area
         }}>
 
         {statusOrder.map((status) => {

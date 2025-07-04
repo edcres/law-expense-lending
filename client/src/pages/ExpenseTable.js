@@ -17,7 +17,6 @@ export default function ExpenseTable() {
         padding: '1rem'
       }}
     >
-      <h2>Expense Table</h2>
       <table
         style={{
           width: '100%',
