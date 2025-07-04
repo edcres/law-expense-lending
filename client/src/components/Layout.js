@@ -79,9 +79,17 @@ export default function Layout() {
           </h2>
         )}
 
+        {/* Divider 1 */}
+          <hr style={{
+            margin: '1.5rem 0',
+            alignSelf: 'center',
+            width: 'calc(100% - 2rem)',
+            borderColor: colors.border
+          }} />
+
+
         {/* Navigation */}
         <nav style={{
-          marginTop: '2rem',
           display: 'flex',
           flexDirection: 'column',
           gap: '0.75rem',
@@ -93,10 +101,11 @@ export default function Layout() {
           <NavItem to="/expense-table" icon={<FiTable />} label="Expense Table" collapsed={collapsed} />
           <NavItem to="/expense/1" icon={<FiFileText />} label="Expense Detail" collapsed={collapsed} />
 
-          {/* Divider */}
+          {/* Divider 2 */}
           <hr style={{
             margin: '1.5rem 0',
-            width: '100%',
+            alignSelf: 'center',
+            width: 'calc(100% - 1rem)',
             borderColor: colors.border
           }} />
 
