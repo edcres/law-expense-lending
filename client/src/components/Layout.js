@@ -86,14 +86,14 @@ export default function Layout() {
           gap: '0.5rem',
           width: '100%',
           boxSizing: 'border-box',
-          padding: collapsed ? '0' : '0 0.5rem'
+          padding: collapsed ? '0 0.65rem' : '0 0.5rem'
         }}>
 
           {/* Divider 1 */}
           <hr style={{
             margin: '1rem 1rem 1rem 1rem',
             alignSelf: 'center',
-            width: 'calc(100% - 2rem)',
+            width: 'calc(100% - 1.5rem)',
             borderColor: colors.border
           }} />
           
@@ -105,7 +105,7 @@ export default function Layout() {
           <hr style={{
             margin: '1.5rem 0',
             alignSelf: 'center',
-            width: 'calc(100% - 2rem)',
+            width: 'calc(100% - 1.5rem)',
             borderColor: colors.border
           }} />
 
