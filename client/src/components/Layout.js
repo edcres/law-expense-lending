@@ -45,7 +45,7 @@ export default function Layout() {
             background: 'none',
             border: 'none',
             color: colors.textPrimary,
-            padding: '1rem',
+            padding: '1rem 1rem 0rem 1rem',
             cursor: 'pointer',
             alignSelf: collapsed ? 'center' : 'flex-start'
           }}
@@ -79,24 +79,24 @@ export default function Layout() {
           </h2>
         )}
 
-        {/* Divider 1 */}
-          <hr style={{
-            margin: '1.5rem 0',
-            alignSelf: 'center',
-            width: 'calc(100% - 2rem)',
-            borderColor: colors.border
-          }} />
-
-
         {/* Navigation */}
         <nav style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.75rem',
+          gap: '0.5rem',
           width: '100%',
           boxSizing: 'border-box',
           padding: collapsed ? '0' : '0 0.5rem'
         }}>
+
+          {/* Divider 1 */}
+          <hr style={{
+            margin: '1rem 1rem 1rem 1rem',
+            alignSelf: 'center',
+            width: 'calc(100% - 2rem)',
+            borderColor: colors.border
+          }} />
+          
           <NavItem to="/" icon={<FiHome />} label="Home" collapsed={collapsed} />
           <NavItem to="/expense-table" icon={<FiTable />} label="Expense Table" collapsed={collapsed} />
           <NavItem to="/expense/1" icon={<FiFileText />} label="Expense Detail" collapsed={collapsed} />
@@ -105,7 +105,7 @@ export default function Layout() {
           <hr style={{
             margin: '1.5rem 0',
             alignSelf: 'center',
-            width: 'calc(100% - 1rem)',
+            width: 'calc(100% - 2rem)',
             borderColor: colors.border
           }} />
 
