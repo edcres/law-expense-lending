@@ -35,8 +35,7 @@ export default function Layout() {
           flexDirection: 'column',
           alignItems: collapsed ? 'center' : 'flex-start',
           boxSizing: 'border-box',
-          transition: 'width 0.2s ease',
-          // overflow: 'hidden'
+          transition: 'width 0.2s ease'
         }}
       >
 
@@ -64,7 +63,8 @@ export default function Layout() {
             width: '70px',
             objectFit: 'contain',
             flexShrink: 0,
-            alignSelf: 'center'
+            alignSelf: 'center',
+            marginTop: collapsed? '0.5rem' : '0'
           }}
         />
 
