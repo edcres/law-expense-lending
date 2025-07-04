@@ -10,8 +10,8 @@ const colors = {
   positive: '#5BD69F',
   warning: '#FFD166',
   info: '#4CC9F0',
-
-  appTitle: '#574a70',       // App Name
+  navHover: '#3C3C52',
+  appTitle: '#66597f',       // App Name
 };
 
 export default colors;

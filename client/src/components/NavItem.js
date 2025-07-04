@@ -9,7 +9,7 @@ export default function NavItem({ to, icon, label, collapsed }) {
   const isActive = location.pathname === to;
 
   const baseStyle = {
-    color: colors.textPrimary,
+    color: isActive ?  'black' : colors.textPrimary,
     textDecoration: 'none',
     fontSize: '1rem',
     display: 'flex',
@@ -18,15 +18,14 @@ export default function NavItem({ to, icon, label, collapsed }) {
     padding: '0.5rem 1rem',
     width: '100%',
     borderRadius: '4px',
-    color: isActive ? '#ffffff' : colors.textPrimary,
     backgroundColor: isActive
         ? colors.primary
         : hover
-        ? '#3C3C52'
+        ? colors.navHover
         : 'transparent',
     cursor: 'pointer',
     transition: 'background-color 0.2s ease',
-    boxSizing: 'border-box' // ✅ This makes sure padding stays inside 100% width
+    boxSizing: 'border-box'
   };
 
   return (
