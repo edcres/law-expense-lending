@@ -27,17 +27,19 @@ export default function Layout() {
       <div
         style={{
           width: collapsed ? '70px' : '180px',
-          minWidth: collapsed ? '70px' : '180px',
-          maxWidth: collapsed ? '70px' : '180px',
+          minWidth: '70px',
+          maxWidth: '180px',
           backgroundColor: colors.surface,
           borderRight: `1px solid ${colors.border}`,
           display: 'flex',
           flexDirection: 'column',
           alignItems: collapsed ? 'center' : 'flex-start',
           boxSizing: 'border-box',
-          transition: 'width 0.3s ease'
+          transition: 'width 0.2s ease',
+          // overflow: 'hidden'
         }}
       >
+
         {/* Collapse Button */}
         <button
           onClick={() => setCollapsed(prev => !prev)}
