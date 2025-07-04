@@ -91,7 +91,7 @@ export default function Layout() {
 
           {/* Divider 1 */}
           <hr style={{
-            margin: '1rem 1rem 1rem 1rem',
+            margin: '1rem',
             alignSelf: 'center',
             width: 'calc(100% - 1.5rem)',
             borderColor: colors.border
